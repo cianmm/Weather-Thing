@@ -8,6 +8,9 @@
   <meta name="description" content="The Weather Thing">
   <meta name="author" content="Cian Mac Mahon">
   <meta name="viewport" content="width=device-width" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
+  <script src="js/functions.js"></script>
   <link rel="stylesheet" href="styles/select-theme-default.css" />
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- fix for zoomy on mobile -->
   <script src="js/select.min.js"></script>
@@ -23,19 +26,19 @@
         Dublin
       </div>
       <div class="locationSelect">
-        <select>
-          <option>Dublin</option>
-          <option>Paris</option>
+        <select id="locationSelectForm1">
+          <option value="dublin">Dublin</option>
+          <option value="paris">Paris</option>
         </select>
       </div>
 
       <div class="conditions">
-        Conditions for Dublin, Ireland at 1:51 pm EST
+        Conditions for <span class="city">Dublin</span>, <span class="country">Ireland</span> at <span class="time">1:51 PM</span> <span class="timezone">GMT</span>
       </div>
 
       <div class="forecastBlock">
         <div class="degrees">
-          9ºC
+          <span class="temp">9</span>º
         </div>
 
         <div class="summary">
@@ -54,7 +57,13 @@
   </div>
 
   <script type="text/javascript">
-    Select.init();
+  // setup Selects
+  Select.init();
+
+  var select1 = new Select({
+      el: document.getElementById("locationSelectForm1")
+    });
+
   </script>
 </body>
 </html>
