@@ -1,0 +1,11 @@
+@mixin forecastimage($imageURL) {
+  @include background-image(url($imageURL));
+  background-position: center top, center;
+  background-repeat: no-repeat;
+
+}
+
+@mixin center() {
+  margin-left: auto;
+  margin-right: auto;
+}

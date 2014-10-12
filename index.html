@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Weather Thing</title>
+  <meta name="description" content="The Weather Thing">
+  <meta name="author" content="Cian Mac Mahon">
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" href="styles/select-theme-default.css" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- fix for zoomy on mobile -->
+  <script src="js/select.min.js"></script>
+  <link rel="stylesheet" href="styles/main.css">
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="container">
+    <div id="forecast1" class="weatherForecast">
+      <div class="locationTitle">
+        Dublin
+      </div>
+      <div class="locationSelect">
+        <select>
+          <option>Dublin</option>
+          <option>Paris</option>
+        </select>
+      </div>
+
+      <div class="conditions">
+        Conditions for Dublin, Ireland at 1:51 pm EST
+      </div>
+
+      <div class="forecastBlock">
+        <div class="degrees">
+          9ºC
+        </div>
+
+        <div class="summary">
+          <p>Stormy and Wet</p>
+          <div class="fullForecast"><a href="http://www.google.com">Full Forecast</a> </div>
+        </div>
+      </div class="forecastBlock">
+      <div class="bottomBar"></div>
+    </div>
+    <div id="forecast2" class="weatherForecast">
+      <div class="locationTitle">
+        Paris
+      </div>
+      <div class="bottomBar"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    Select.init();
+  </script>
+</body>
+</html>
