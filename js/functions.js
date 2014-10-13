@@ -1,12 +1,48 @@
-$(document).ready(function(){
+/*global $:false, Select:false, Modernizr:false, moment:false*/
 
+// setup Selects
+Select.init();
 
+var select1 = new Select({
+    el: document.getElementById("locationSelectForm1")
+  });
+
+var select2 = new Select({
+    el: document.getElementById("locationSelectForm2")
+  });
+
+select1.on("change", function(){
+  getWeatherByCity(this.value, 1, buildWeather);
+});
+select2.on("change", function(){
+  getWeatherByCity(this.value, 2, buildWeather);
 });
 
+$(document).ready(function(){
+  get_location();
+});
 
-var getWeatherByLatLon = function(lat, lon, form, callback) {
+// our location-grabbing code. Tests for existance of the location api using Modernizr, if doesn't exist falls back to some tasty defaults.
+var get_location = function() {
+  if (Modernizr.geolocation) {
+    navigator.geolocation.getCurrentPosition(getWeatherByLatLon, noPermission);
+  } else {
+    // If there is no support, let's load Dublin and Paris. Everybody loves Dublin and Paris.
+    getWeatherByCity(2964574, 1, buildWeather);
+    getWeatherByCity(2988507, 2, buildWeather);
+  }
+};
 
-  var url = "//api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=metric";
+function noPermission(err) {
+  if (err.code === 1){
+    //User didn't give permission, load Dublin and Paris.
+    getWeatherByCity(2964574, 1, buildWeather);
+    getWeatherByCity(2988507, 2, buildWeather);
+  }
+}
+
+var getWeatherByLatLon = function(loc) {
+  var url = "//api.openweathermap.org/data/2.5/weather?lat=" + loc.coords.latitude + "&lon=" + loc.coords.lonitude + "&units=metric";
 
   var returnData = {};
 
@@ -16,8 +52,11 @@ var getWeatherByLatLon = function(lat, lon, form, callback) {
     returnData.country = data.sys.country;
     returnData.main = data.weather[0].main;
     returnData.desc = toTitleCase(data.weather[0].description);
+    returnData.dt = data.dt;
+    returnData.id = data.id;
 
-    callback(returnData, form);
+    buildWeather(returnData, 1);
+    buildWeather(returnData, 2);
 
   });
 
@@ -50,8 +89,6 @@ function buildWeather(weather, form) {
   var conditions = forecast.find('.conditions');
 
   var time = moment(weather.dt*1000);
-
-  console.log(time.format("h:mm a"));
 
   forecast.find('.locationTitle').text(weather.name);
 

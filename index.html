@@ -5,12 +5,9 @@
     <meta name="description" content="The Weather Thing">
     <meta name="author" content="Cian Mac Mahon">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
-    <script src="js/functions.js"></script>
     <link rel="stylesheet" href="styles/select-theme-default.css">
-    <script src="js/select.min.js"></script>
     <link rel="stylesheet" href="styles/main.css">
+    <script src="js/select.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -59,24 +56,9 @@
         <div class="bottomBar"></div>
       </div>
     </div>
-    <script>
-      // setup Selects
-      Select.init();
-      
-      var select1 = new Select({
-          el: document.getElementById("locationSelectForm1")
-        });
-      
-      var select2 = new Select({
-          el: document.getElementById("locationSelectForm2")
-        });
-      
-      select1.on("change", function(){
-        getWeatherByCity(this.value, 1, buildWeather);
-      });
-      select2.on("change", function(){
-        getWeatherByCity(this.value, 2, buildWeather);
-      })
-    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
+    <script src="js/min/functions-min.js"></script>
+    <script src="js/min/modernizr-min.js"></script>
   </body>
 </html>
