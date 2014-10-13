@@ -1,69 +1,82 @@
-<!doctype html>
-
+<!DOCTYPE HTML>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>Weather Thing</title>
-  <meta name="description" content="The Weather Thing">
-  <meta name="author" content="Cian Mac Mahon">
-  <meta name="viewport" content="width=device-width" />
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
-  <script src="js/functions.js"></script>
-  <link rel="stylesheet" href="styles/select-theme-default.css" />
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- fix for zoomy on mobile -->
-  <script src="js/select.min.js"></script>
-  <link rel="stylesheet" href="styles/main.css">
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-</head>
-<body>
-  <div class="container">
-    <div id="forecast1" class="weatherForecast">
-      <div class="locationTitle">
-        Dublin
-      </div>
-      <div class="locationSelect">
-        <select id="locationSelectForm1">
-          <option value="dublin">Dublin</option>
-          <option value="paris">Paris</option>
-        </select>
-      </div>
-
-      <div class="conditions">
-        Conditions for <span class="city">Dublin</span>, <span class="country">Ireland</span> at <span class="time">1:51 PM</span> <span class="timezone">GMT</span>
-      </div>
-
-      <div class="forecastBlock">
-        <div class="degrees">
-          <span class="temp">9</span>º
+  <head>
+    <title>Weather Thing</title>
+    <meta name="description" content="The Weather Thing">
+    <meta name="author" content="Cian Mac Mahon">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
+    <script src="js/functions.js"></script>
+    <link rel="stylesheet" href="styles/select-theme-default.css">
+    <script src="js/select.min.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <div id="forecast1" class="weatherForecast">
+        <div class="locationTitle">Dublin</div>
+        <div class="locationSelect">
+          <select id="locationSelectForm1">
+            <option value="2964574">Dublin</option>
+            <option value="2643743">London</option>
+            <option value="2988507">Paris</option>
+            <option value="3128760">Barcelona</option>
+            <option value="3169070">Rome</option>
+            <option value="264371">Athens</option>
+          </select>
         </div>
-
-        <div class="summary">
-          <p>Stormy and Wet</p>
-          <div class="fullForecast"><a href="http://www.google.com">Full Forecast</a> </div>
+        <div class="conditions">Conditions for <span class="city">Dublin</span>, <span class="country">Ireland</span> at <span class="time">1:51 PM</span> <span class="timezone">GMT</span></div>
+        <div class="forecastBlock">
+          <div class="degrees"><span class="temp">9</span>&deg;</div>
+          <div class="summary">
+            <p>Stormy and Wet</p>
+          </div>
+          <div class="fullForecast"><a href="http://www.Google.com">Full Forecast</a></div>
         </div>
-      </div class="forecastBlock">
-      <div class="bottomBar"></div>
-    </div>
-    <div id="forecast2" class="weatherForecast">
-      <div class="locationTitle">
-        Paris
+        <div class="bottomBar"></div>
       </div>
-      <div class="bottomBar"></div>
+      <div id="forecast2" class="weatherForecast">
+        <div class="locationTitle">Dublin</div>
+        <div class="locationSelect">
+          <select id="locationSelectForm2">
+            <option value="2964574">Dublin</option>
+            <option value="2643743">London</option>
+            <option value="2988507">Paris</option>
+            <option value="3128760">Barcelona</option>
+            <option value="3169070">Rome</option>
+            <option value="264371">Athens</option>
+          </select>
+        </div>
+        <div class="conditions">Conditions for <span class="city">Dublin</span>, <span class="country">Ireland</span> at <span class="time">1:51 PM</span> <span class="timezone">GMT</span></div>
+        <div class="forecastBlock">
+          <div class="degrees"><span class="temp">9</span>&deg;</div>
+          <div class="summary">
+            <p>Stormy and Wet</p>
+          </div>
+          <div class="fullForecast"><a href="http://www.Google.com">Full Forecast</a></div>
+        </div>
+        <div class="bottomBar"></div>
+      </div>
     </div>
-  </div>
-
-  <script type="text/javascript">
-  // setup Selects
-  Select.init();
-
-  var select1 = new Select({
-      el: document.getElementById("locationSelectForm1")
-    });
-
-  </script>
-</body>
+    <script>
+      // setup Selects
+      Select.init();
+      
+      var select1 = new Select({
+          el: document.getElementById("locationSelectForm1")
+        });
+      
+      var select2 = new Select({
+          el: document.getElementById("locationSelectForm2")
+        });
+      
+      select1.on("change", function(){
+        getWeatherByCity(this.value, 1, buildWeather);
+      });
+      select2.on("change", function(){
+        getWeatherByCity(this.value, 2, buildWeather);
+      })
+    </script>
+  </body>
 </html>

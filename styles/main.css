@@ -112,16 +112,16 @@ html {
   font-weight: bold; }
 .forecastBlock .degrees {
   width: 30%;
-  font-size: 3.5em;
+  font-size: 4em;
   text-align: center; }
 .forecastBlock .summary {
   width: 50%; }
   .forecastBlock .summary .fullForecast {
     margin-top: 18px; }
-    .forecastBlock .summary .fullForecast a {
-      font-weight: lighter;
-      font-style: italic;
-      color: white; }
+.forecastBlock a {
+  font-weight: lighter;
+  font-style: italic;
+  color: white; }
 
 .locationSelect {
   text-align: center;

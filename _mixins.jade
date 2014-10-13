@@ -1,0 +1,22 @@
+mixin forecastBlock(num)
+  div(id="forecast" + num).weatherForecast
+    .locationTitle Dublin
+    .locationSelect
+      select(id="locationSelectForm" + num)
+        option(value="2964574") Dublin
+        option(value="2643743") London
+        option(value="2988507") Paris
+        option(value="3128760") Barcelona
+        option(value="3169070") Rome
+        option(value="264371") Athens
+    .conditions
+        | Conditions for <span class="city">Dublin</span>, <span class="country">Ireland</span> at <span class="time">1:51 PM</span> <span class="timezone">GMT</span>
+    .forecastBlock
+      .degrees
+        span.temp 9
+        |&deg;
+      .summary
+        p Stormy and Wet
+      .fullForecast
+          a(href="http://www.Google.com") Full Forecast
+    .bottomBar

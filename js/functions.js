@@ -15,7 +15,7 @@ var getWeatherByLatLon = function(lat, lon, form, callback) {
     returnData.name = data.name;
     returnData.country = data.sys.country;
     returnData.main = data.weather[0].main;
-    returnData.desc = data.weather[0].description;
+    returnData.desc = toTitleCase(data.weather[0].description);
 
     callback(returnData, form);
 
@@ -33,8 +33,9 @@ var getWeatherByCity = function(id, form, callback) {
     returnData.name = data.name;
     returnData.country = data.sys.country;
     returnData.main = data.weather[0].main;
-    returnData.desc = data.weather[0].description;
+    returnData.desc = toTitleCase(data.weather[0].description);
     returnData.dt = data.dt;
+    returnData.id = data.id;
 
     // note to self you aren't going mad, data.dt is the time that the forecast was recieved not the time of the request
     callback(returnData, form);
@@ -62,4 +63,16 @@ function buildWeather(weather, form) {
   // set degrees
   var degrees = weather.temp.toFixed(0);
   forecast.find('.temp').text(degrees);
+
+  // set summary
+  forecast.find('.summary').text(weather.desc);
+
+  // set forecast link
+  forecast.find('.fullForecast a').attr("href", "http://openweathermap.org/city/" + weather.id);
+}
+
+// Stackoverflow to the rescue
+function toTitleCase(str)
+{
+  return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }

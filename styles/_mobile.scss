@@ -62,7 +62,7 @@
 
   .degrees {
     width: 30%;
-    font-size: 3.5em;
+    font-size: 4em;
     text-align: center;
   }
 
@@ -71,15 +71,15 @@
     .fullForecast {
       margin-top: 18px;
 
-      a {
-        font-weight: lighter;
-        font-style: italic;
-        color: white;
-      }
-
     }
-  }
 
+  }
+  a {
+    font-weight: lighter;
+    font-style: italic;
+    color: white;
+    
+  }
 }
 
 // Select box
