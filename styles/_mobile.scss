@@ -1,35 +1,93 @@
 //globals for weather forecast area
+$screen-sm-min: 768px;
 
-.weatherForecast {
+html, body {
+  height: 100%;
+}
+
+.forecasts {
+  max-width: 1800px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+
+  .weatherForecast {
+    min-height: 380px;
+    margin-bottom: 10px;
+    position: relative;
+
+    @media (min-width: $screen-sm-min){
+      width: 50%;
+      max-width: 9000px;
+      float: left;
+
+    }
+
+    .forecastContainer {
+      max-width: 600px;
+      margin-top: 40px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  }
+
+}
+
+.locationTitle {
+  padding: 15px;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 2em;
+  // fallback for browsers which don't support opacity
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.5);
+  color: black;
+
+}
+
+.bottomBar {
   width: 100%;
-  min-height: 380px;
-  margin-bottom: 10px;
-  position: relative;
+  min-height: 55px;
+  background-color: rgb(50, 50, 200);
+  position: absolute;
+  bottom: 0;
+}
 
-  .locationTitle {
-    padding: 15px;
-    text-align: center;
-    font-weight: bolder;
-    font-size: 2em;
-    // fallback for browsers which don't support opacity
-    background: rgb(255, 255, 255);
-    background: rgba(255, 255, 255, 0.5);
+.conditions {
+  margin-top: 25px;
+  text-align: center;
+  font-weight: bold;
+}
 
+.forecastBlock {
+  margin-left: auto;
+  margin-right: auto;
+
+  >div {
+    float: left;
   }
 
-  .bottomBar {
-    width: 100%;
-    position: absolute;
-    min-height: 55px;
-    background-color: rgb(50, 50, 200);
-    bottom: 0;
-  }
-
-  .conditions {
+  .degrees {
     margin-top: 40px;
-    color: white;
-    font-weight: bold;
+    width: 40%;
+    font-size: 4em;
     text-align: center;
+  }
+
+  .summary {
+    margin-top: 40px;
+    padding-left: 10px;
+    font-weight: bold;
+    width: 50%;
+    .fullForecast {
+      margin-top: 20px;
+
+      a {
+        color: white;
+        font-style: italic;
+      }
+    }
   }
 
 }
@@ -46,41 +104,6 @@
 }
 
 
-// Forecast details
-
-.forecastBlock {
-
-  >div {
-    float: left;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 25px;
-    padding: 5px;
-    color: white;
-    font-weight: bold;
-  }
-
-  .degrees {
-    width: 30%;
-    font-size: 4em;
-    text-align: center;
-  }
-
-  .summary {
-    width: 50%;
-    .fullForecast {
-      margin-top: 18px;
-
-    }
-
-  }
-  a {
-    font-weight: lighter;
-    font-style: italic;
-    color: white;
-    
-  }
-}
 
 // Select box
 
@@ -88,6 +111,7 @@
   text-align: center;
   margin-top: 25px;
   border: none;
+
   .select-target.select-theme-default {
     min-width: 200px;
     text-align: left;

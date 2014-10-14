@@ -33,7 +33,7 @@
 		"outputAbbreviatedPath": "\/images\/calm.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"processed": 0
+		"processed": 1
 		},
 	"\/images\/stormy.jpg": {
 		"fileType": 16384,
@@ -44,7 +44,7 @@
 		"outputAbbreviatedPath": "\/images\/stormy.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
-		"processed": 0
+		"processed": 1
 		},
 	"\/index.html": {
 		"fileType": 8192,
@@ -178,6 +178,22 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/styles\/_mobile.scss",
 		"outputAbbreviatedPath": "\/css\/_mobile.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 1,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/styles\/_mobile1.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/styles\/_mobile1.scss",
+		"outputAbbreviatedPath": "\/css\/_mobile1.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -1349,7 +1365,7 @@
 	"bowerAbbreviatedPath": "",
 	"displayValue": "Weather-Thing",
 	"displayValueWasSetByUser": 1,
-	"iconImageName": "brackets_gray"
+	"iconImageName": "\/images\/calm.jpg"
 	},
 "projectSettings": {
 	"alwaysUseExternalServer": 0,

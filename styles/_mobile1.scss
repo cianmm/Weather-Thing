@@ -1,0 +1,174 @@
+//globals for weather forecast area
+$screen-sm-min: 850px;
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: $screen-sm-min) {
+    max-width: 1500px;
+    position: relative;
+  }
+
+}
+
+
+
+.weatherForecast {
+  min-height: 380px;
+  margin-bottom: 10px;
+  position: relative;
+
+  @media (min-width: $screen-sm-min) {
+    width: 50%;
+    max-width: 800px;
+    height: 600px;
+    float: left;
+  }
+
+  .locationTitle {
+    padding: 15px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 2em;
+    // fallback for browsers which don't support opacity
+    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.5);
+
+    @media (min-width: $screen-sm-min) {
+      padding: 30px;
+    }
+  }
+
+  .bottomBar {
+    width: 100%;
+    position: absolute;
+    min-height: 55px;
+    background-color: rgb(50, 50, 200);
+    bottom: 0;
+
+    @media (min-width: $screen-sm-min) {
+      min-height: 80px;
+    }
+
+  }
+
+  .conditions {
+    margin-top: 40px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+
+}
+
+// individual forecast boxes
+
+#forecast1 {
+  @include forecastimage("/images/stormy.jpg");
+
+}
+
+#forecast2 {
+  @include forecastimage("/images/calm.jpg");
+}
+
+
+// Forecast details
+
+.forecastBlock {
+
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: $screen-sm-min) {
+    width: 700px;
+    margin-left: 15%;
+  }
+
+
+  .degrees,
+  .summary {
+    float: left;
+    margin-top: 25px;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+
+    @media (min-width: $screen-sm-min) {
+      margin-top: 100px;
+      font-size: 2em;
+    }
+
+  }
+
+  .degrees {
+    width: 30%;
+    font-size: 4em;
+    text-align: center;
+    @media (min-width: $screen-sm-min){
+      font-size: 5.5em;
+    }
+
+  }
+
+  .summary {
+    width: 50%;
+    text-align: left;
+    @media (min-width: $screen-sm-min){
+      font-size: 1.9em;
+    }
+  }
+
+  .fullForecast {
+    float: left;
+    margin-top: 20px;
+    padding: 5px;
+
+  }
+
+  a {
+    font-weight: lighter;
+    font-style: italic;
+    color: white;
+  }
+
+}
+
+// Select box
+
+.locationSelect {
+  text-align: center;
+  margin-top: 25px;
+  border: none;
+
+  @media (min-width: $screen-sm-min) {
+    margin-top: 60px;
+  }
+
+  .select-target.select-theme-default {
+    min-width: 200px;
+    text-align: left;
+    border: none;
+    padding-right: 0px;
+
+    b {
+      background-color: rgb(50, 50, 200);
+      right: 0em;
+      height: 100%;
+      width: 35px;
+      @include background-image(url("/images/arrow.png"));
+      background-position: center;
+      background-repeat: no-repeat;
+      &:after,
+      &:before {
+        display: none;
+      }
+
+    }
+
+
+  }
+
+}

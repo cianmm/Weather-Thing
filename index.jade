@@ -11,8 +11,9 @@ html(lang="en")
     script(src="js/select.min.js")
   body
     .container
-      +forecastBlock(1)
-      +forecastBlock(2)
+      .forecasts
+        +forecastBlock(1)
+        +forecastBlock(2)
     script(src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js")
     script(src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js")
     script(src="js/min/functions-min.js")

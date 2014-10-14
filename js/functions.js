@@ -18,9 +18,18 @@ select2.on("change", function(){
   getWeatherByCity(this.value, 2, buildWeather);
 });
 
+
+// DOCUMENT READY STARTS HERE
 $(document).ready(function(){
+  // start by loading our standard Dublin and Paris
+  loadDefaultLocs();
   get_location();
 });
+
+var loadDefaultLocs = function() {
+  getWeatherByCity(2964574, 1, buildWeather);
+  getWeatherByCity(2988507, 2, buildWeather);
+};
 
 // our location-grabbing code. Tests for existance of the location api using Modernizr, if doesn't exist falls back to some tasty defaults.
 var get_location = function() {
@@ -28,16 +37,14 @@ var get_location = function() {
     navigator.geolocation.getCurrentPosition(getWeatherByLatLon, noPermission);
   } else {
     // If there is no support, let's load Dublin and Paris. Everybody loves Dublin and Paris.
-    getWeatherByCity(2964574, 1, buildWeather);
-    getWeatherByCity(2988507, 2, buildWeather);
+    loadDefaultLocs();
   }
 };
 
 function noPermission(err) {
   if (err.code === 1){
     //User didn't give permission, load Dublin and Paris.
-    getWeatherByCity(2964574, 1, buildWeather);
-    getWeatherByCity(2988507, 2, buildWeather);
+    loadDefaultLocs();
   }
 }
 
@@ -102,10 +109,10 @@ function buildWeather(weather, form) {
   forecast.find('.temp').text(degrees);
 
   // set summary
-  forecast.find('.summary').text(weather.desc);
+  forecast.find('.desc').text(weather.desc);
 
   // set forecast link
-  forecast.find('.fullForecast a').attr("href", "http://openweathermap.org/city/" + weather.id);
+  forecast.find('.fullForecast').attr("href", "http://openweathermap.org/city/" + weather.id);
 }
 
 // Stackoverflow to the rescue
