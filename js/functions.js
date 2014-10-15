@@ -11,19 +11,21 @@ var select2 = new Select({
     el: document.getElementById("locationSelectForm2")
   });
 
-select1.on("change", function(){
-  getWeatherByCity(this.value, 1, buildWeather);
-});
-select2.on("change", function(){
-  getWeatherByCity(this.value, 2, buildWeather);
-});
-
 
 // DOCUMENT READY STARTS HERE
 $(document).ready(function(){
   // start by loading our standard Dublin and Paris
+  console.log("loadDefaults");
   loadDefaultLocs();
   get_location();
+
+  $('#locationSelectForm1').on("change blur", function(){
+    getWeatherByCity(this.value, 1, buildWeather);
+  });
+  $('#locationSelectForm2').on("change blur", function(){
+    getWeatherByCity(this.value, 2, buildWeather);
+  });
+
 });
 
 var loadDefaultLocs = function() {

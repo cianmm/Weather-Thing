@@ -6,10 +6,16 @@ textarea {
     color: #222;
 }
 
+@include font-face(Foco, '/fonts/Foco_std_Rg', regular);
+@include font-face(Foco, '/fonts/Foco_std_Lt', light);
+@include font-face(Foco, '/fonts/Foco_std_Bd', bold);
+
+
 html {
     font-size: 1em;
     line-height: 1.4;
-    font-family: $lucida-grande;
+    font-family: Foco, $lucida-grande;
+    font-weight: bold;
 }
 
 * {
