@@ -126,6 +126,8 @@ html, body {
 
 #forecast1 {
   @include forecastimage("/images/calm.jpg");
+  opacity: 0;
+
   @media (min-width: $screen-sm-min){
 
     left:0;
@@ -135,6 +137,8 @@ html, body {
 
 #forecast2 {
   @include forecastimage("/images/calm.jpg");
+  opacity: 0;
+
 @media (min-width: $screen-sm-min){
 
   right:0;

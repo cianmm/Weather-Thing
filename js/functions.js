@@ -35,6 +35,7 @@ var loadDefaultLocs = function() {
 
 // our location-grabbing code. Tests for existance of the location api using Modernizr, if doesn't exist falls back to some tasty defaults.
 var get_location = function() {
+  console.log("asking for location");
   if (Modernizr.geolocation) {
     navigator.geolocation.getCurrentPosition(getWeatherByLatLon, noPermission);
   } else {
@@ -84,6 +85,7 @@ var getWeatherByCity = function(id, form, callback) {
     returnData.desc = toTitleCase(data.weather[0].description);
     returnData.dt = data.dt;
     returnData.id = data.id;
+    returnData.weatherid = data.weather[0].id;
 
     // note to self you aren't going mad, data.dt is the time that the forecast was recieved not the time of the request
     callback(returnData, form);
@@ -99,22 +101,65 @@ function buildWeather(weather, form) {
 
   var time = moment(weather.dt*1000);
 
-  forecast.find('.locationTitle').text(weather.name);
+  // decide on the background to use
+  var weatherid = parseInt(weather.weatherid);
+  var img;
+  var newcolor;
 
-  // set conditions area
-  conditions.find('.city').text(weather.name);
-  conditions.find('.country').text(weather.country);
-  conditions.find('.time').text(time.format("h:mm a"));
+  console.log(weatherid);
 
-  // set degrees
-  var degrees = weather.temp.toFixed(0);
-  forecast.find('.temp').text(degrees);
+    // originaly tried a switch here. I must be super tired, cause it didn't do anything.
 
-  // set summary
-  forecast.find('.desc').text(weather.desc);
+    if (weatherid < 233) {
+      img = "storm.jpg"; //Thunderstorm (not really relevent image)
+      newcolor = "rgba(52, 73, 94,1.0)";
+    } else if (weatherid > 232 && weatherid < 322) {
+      img = "rain.jpg";// light rain
+      newcolor = "rgba(52, 152, 219,1.0)";
+    }  else if (weatherid > 322 && weatherid < 530) {
+      img = "heavyrain.jpg";
+      newcolor = "rgba(41, 128, 185,1.0)";
+    } else if (weatherid >= 600 && weatherid <= 622) {
+      img = "snow.jpg";
+      newcolor = "rgba(127, 140, 141,1.0)";
+    } else if (weatherid >= 701 && weatherid <= 781) {
+      img = "lonelytree.jpg"; // completely arbitrary at this stage
+      newcolor = "rgba(241, 196, 15,1.0)";
+    } else if (weatherid >= 800 && weatherid <= 804) {
+      img = "valencia.jpg";
+      newcolor = "rgba(22, 160, 133,1.0)";
+    } else {
+      img = "valley.jpg";
+    }
 
-  // set forecast link
-  forecast.find('.fullForecast').attr("href", "http://openweathermap.org/city/" + weather.id);
+  console.log(img);
+  // set background (may as well let it load while we do the rest)
+  forecast.fadeTo("fast", 0, function(){
+    $(this).css("background-image", "url(/images/" + img + ")")
+
+    $(this).find('.locationTitle').text(weather.name).css("color", newcolor);
+    // set conditions area
+    conditions.find('.city').text(weather.name);
+    conditions.find('.country').text(weather.country);
+    conditions.find('.time').text(time.format("h:mm a"));
+
+    // set degrees
+    var degrees = weather.temp.toFixed(0);
+    $(this).find('.temp').text(degrees);
+
+    // set summary
+    $(this).find('.desc').text(weather.desc);
+
+    // set forecast link
+    $('.fullForecast a').attr("href", "http://openweathermap.org/city/" + weather.id);
+
+    // set new colors
+    $( this ).find('.bottomBar, .select-target b').css("background-color", newcolor);
+
+    $(this).fadeTo("fast", 1);
+  });
+
+
 }
 
 // Stackoverflow to the rescue

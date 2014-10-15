@@ -174,7 +174,8 @@ html, body {
   background-image: url("/images/calm.jpg");
   background-image: url("/images/calm.jpg");
   background-position: center top, center;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  opacity: 0; }
   @media (min-width: 768px) {
     #forecast1 {
       left: 0; } }
@@ -183,7 +184,8 @@ html, body {
   background-image: url("/images/calm.jpg");
   background-image: url("/images/calm.jpg");
   background-position: center top, center;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  opacity: 0; }
   @media (min-width: 768px) {
     #forecast2 {
       right: 0; } }
