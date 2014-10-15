@@ -6,21 +6,30 @@ html, body {
 }
 
 .forecasts {
-  max-width: 1800px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   color: white;
+  display: block;
+  position: absolute;
+  bottom:0;
+  top:0;
+  left:0;
+  right:0;
 
   .weatherForecast {
     min-height: 380px;
-    margin-bottom: 10px;
     position: relative;
+    background-size: cover;
 
     @media (min-width: $screen-sm-min){
       width: 50%;
-      max-width: 9000px;
       float: left;
-
+      height: auto;
+      position: absolute;
+      top:0;
+      bottom: 0;
+      display: block;
     }
 
     .forecastContainer {
@@ -95,13 +104,21 @@ html, body {
 // individual forecast boxes
 
 #forecast1 {
-  @include forecastimage("/images/stormy.jpg");
+  @include forecastimage("/images/calm.jpg");
+  @media (min-width: $screen-sm-min){
 
+    left:0;
+
+  }
 }
 
 #forecast2 {
   @include forecastimage("/images/calm.jpg");
-}
+@media (min-width: $screen-sm-min){
+
+  right:0;
+
+}}
 
 
 

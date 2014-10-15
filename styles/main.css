@@ -70,19 +70,29 @@ html, body {
   height: 100%; }
 
 .forecasts {
-  max-width: 1800px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  color: white; }
+  color: white;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0; }
   .forecasts .weatherForecast {
     min-height: 380px;
-    margin-bottom: 10px;
-    position: relative; }
+    position: relative;
+    background-size: cover; }
     @media (min-width: 768px) {
       .forecasts .weatherForecast {
         width: 50%;
-        max-width: 9000px;
-        float: left; } }
+        float: left;
+        height: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: block; } }
     .forecasts .weatherForecast .forecastContainer {
       max-width: 600px;
       margin-top: 40px;
@@ -132,16 +142,22 @@ html, body {
         font-style: italic; }
 
 #forecast1 {
-  background-image: url("/images/stormy.jpg");
-  background-image: url("/images/stormy.jpg");
+  background-image: url("/images/calm.jpg");
+  background-image: url("/images/calm.jpg");
   background-position: center top, center;
   background-repeat: no-repeat; }
+  @media (min-width: 768px) {
+    #forecast1 {
+      left: 0; } }
 
 #forecast2 {
   background-image: url("/images/calm.jpg");
   background-image: url("/images/calm.jpg");
   background-position: center top, center;
   background-repeat: no-repeat; }
+  @media (min-width: 768px) {
+    #forecast2 {
+      right: 0; } }
 
 .locationSelect {
   text-align: center;
