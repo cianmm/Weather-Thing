@@ -129,7 +129,7 @@ function buildWeather(weather, form) {
       img = "valencia.jpg";
       newcolor = "rgba(22, 160, 133,1.0)";
     } else {
-      img = "valley.jpg";
+      img = "beach.jpg";
     }
 
   console.log(img);
