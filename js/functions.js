@@ -1,15 +1,15 @@
-/*global $:false, Select:false, Modernizr:false, moment:false*/
+/*global $:false, Select:false, Modernizr:false, moment:false, console:false*/
 
 // setup Selects
 Select.init();
 
-var select1 = new Select({
-    el: document.getElementById("locationSelectForm1")
-  });
-
-var select2 = new Select({
-    el: document.getElementById("locationSelectForm2")
-  });
+// var select1 = new Select({
+//     el: document.getElementById("locationSelectForm1")
+//   });
+//
+// var select2 = new Select({
+//     el: document.getElementById("locationSelectForm2")
+//   });
 
 
 // DOCUMENT READY STARTS HERE
@@ -135,7 +135,7 @@ function buildWeather(weather, form) {
   console.log(img);
   // set background (may as well let it load while we do the rest)
   forecast.fadeTo("fast", 0, function(){
-    $(this).css("background-image", "url(/images/" + img + ")")
+    $(this).css("background-image", "url(/images/" + img + ")");
 
     $(this).find('.locationTitle').text(weather.name).css("color", newcolor);
     // set conditions area
